@@ -1,3 +1,6 @@
+'''Contains functions for parsing the commands from a Hack assembly
+file.'''
+
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
@@ -6,8 +9,8 @@ logging.basicConfig(level=logging.DEBUG)
 def load_file(filename: str) -> str:
     """Load the assembly file"""
 
-    fh = open(filename, "r")
-    text = fh.read()
+    file_h = open(filename, "r")
+    text = file_h.read()
     return text
 
 
@@ -24,9 +27,9 @@ def trim(assembly_text: str) -> str:
     stripped_lines = map(lambda line: line.strip(), lines)
     without_blanks = filter(lambda line: line != '', stripped_lines)
     without_comments = filter(lambda line: line[:2] != '//',
-        without_blanks)
+                              without_blanks)
     without_inline_comments = map(remove_inline_comments,
-        without_comments)
+                                  without_comments)
     out = "\n".join(without_inline_comments)
     return out
 

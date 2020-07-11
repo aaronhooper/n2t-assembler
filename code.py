@@ -1,3 +1,6 @@
+'''Contains functions for converting parsed assembly instructions into
+Hack machine instructions.'''
+
 comp_map = {
     '0':   '0101010',
     '1':   '0111111',
